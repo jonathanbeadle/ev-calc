@@ -20,16 +20,24 @@ function getNumberValue(id) {
     return parseFloat(document.getElementById(id).value) || 0;
 }
 
-
 function populateDieselVehicleData() {
     const dieselVehicleSelect = document.getElementById('dieselVehicleSelect').value;
     const mpgDieselInput = document.getElementById('mpgDiesel');
 
-    if (dieselVehicleSelect === 'vauxhall_vivaro_diesel') {
-        mpgDieselInput.value = 37.6;
+    if (dieselVehicleSelect === 'ford_transit_diesel') {
+        mpgDieselInput.value = 27.7;
         mpgDieselInput.disabled = true;
-    } else if (dieselVehicleSelect === 'ford_transit_diesel') {
-        mpgDieselInput.value = 39.8;
+    } else if (dieselVehicleSelect === 'vauxhall_vivaro_diesel') {
+        mpgDieselInput.value = 41.5;
+        mpgDieselInput.disabled = true;
+    } else if (dieselVehicleSelect === 'volkswagen_transporter_diesel') {
+        mpgDieselInput.value = 32.5;
+        mpgDieselInput.disabled = true;
+    } else if (dieselVehicleSelect === 'peugeot_partner_diesel') {
+        mpgDieselInput.value = 52;
+        mpgDieselInput.disabled = true;
+    } else if (dieselVehicleSelect === 'vauxhall_combo_diesel') {
+        mpgDieselInput.value = 50.5;
         mpgDieselInput.disabled = true;
     } else {
         mpgDieselInput.value = '';
@@ -42,16 +50,31 @@ function populateEVVehicleData() {
     const batterySizeInput = document.getElementById('batterySize');
     const evRangeInput = document.getElementById('evRange');
 
-    if (evVehicleSelect === 'vauxhall_vivaro_ev') {
-        batterySizeInput.value = 75;
-        evRangeInput.value = 170;
+    if (evVehicleSelect === 'ford_transit_ev') {
+        batterySizeInput.value = 68;
+        evRangeInput.value = 157;
         batterySizeInput.disabled = true;
         evRangeInput.disabled = true;
-    } else if (evVehicleSelect === 'ford_transit_ev') {
-        batterySizeInput.value = 68; 
-        evRangeInput.value = 160; 
-        batterySizeInput.disabled = true; 
-        evRangeInput.disabled = true; 
+    } else if (evVehicleSelect === 'vauxhall_vivaro_ev') {
+        batterySizeInput.value = 75;
+        evRangeInput.value = 196;
+        batterySizeInput.disabled = true;
+        evRangeInput.disabled = true;
+    } else if (evVehicleSelect === 'volkswagen_id_buzz_ev') {
+        batterySizeInput.value = 77;
+        evRangeInput.value = 252;
+        batterySizeInput.disabled = true;
+        evRangeInput.disabled = true;
+    } else if (evVehicleSelect === 'peugeot_e_partner_ev') {
+        batterySizeInput.value = 50;
+        evRangeInput.value = 205;
+        batterySizeInput.disabled = true;
+        evRangeInput.disabled = true;
+    } else if (evVehicleSelect === 'vauxhall_combo_ev') {
+        batterySizeInput.value = 50;
+        evRangeInput.value = 175;
+        batterySizeInput.disabled = true;
+        evRangeInput.disabled = true;
     } else {
         batterySizeInput.value = '';
         evRangeInput.value = '';
@@ -59,7 +82,6 @@ function populateEVVehicleData() {
         evRangeInput.disabled = false;
     }
 }
-
 
 function calculateSavings() {
     const summaryContent = document.getElementById('summaryContent');
@@ -112,8 +134,8 @@ function calculateSavings() {
     const dieselLitresUsed = annualGallons * litresPerGallon;
     const dieselCO2Emissions = dieselLitresUsed * 2.67;
 
-    // EV CO2 emissions calculation
-    const evCO2Emissions = annualMileage * 0 / 1000;
+    // EV CO2 emissions calculation (assuming zero tailpipe emissions)
+    const evCO2Emissions = 0;
 
     // CO2 savings calculation
     const co2Savings = dieselCO2Emissions - evCO2Emissions;
@@ -185,20 +207,26 @@ function calculateSavings() {
 
 function resetForm() {
     document.getElementById('annualMileage').value = 20000;
+    document.getElementById('dieselVehicleSelect').value = 'custom';
+    document.getElementById('mpgDiesel').value = '';
+    document.getElementById('mpgDiesel').disabled = false;
     document.getElementById('costPerLitre').value = 1.49;
-    document.getElementById('mpgDiesel').value = 34;
+
+    document.getElementById('evVehicleSelect').value = 'custom';
+    document.getElementById('batterySize').value = '';
+    document.getElementById('batterySize').disabled = false;
+    document.getElementById('evRange').value = '';
+    document.getElementById('evRange').disabled = false;
     document.getElementById('costPerKwhSelect').value = '0.45';
     document.getElementById('costPerKwh').style.display = 'none';
     document.getElementById('costPerKwh').value = '';
-    document.getElementById('batterySize').value = 75;
-    document.getElementById('evRange').value = 170;
+
     document.getElementById('includeHireRates').checked = false;
-    document.getElementById('hireRateInputs').style.display = 'none';
+    toggleHireRateInputs();
     document.getElementById('dieselWeeklyHireRate').value = 125;
     document.getElementById('evWeeklyHireRate').value = 128;
 
     document.getElementById('summaryContent').style.display = 'none';
-
     document.getElementById('co2SummaryContent').style.display = 'none';
 
     window.scrollTo({ top: 0, behavior: 'smooth' });

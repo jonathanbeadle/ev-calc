@@ -23,14 +23,18 @@
                 </label>
                 <input type="number" id="annualMileage" value="20000" step="0.01">
             </div>
+
             <div class="section">
                 <h2>Diesel Vehicle</h2>
 
                 <label for="dieselVehicleSelect">Select Diesel Vehicle:</label>
                 <select id="dieselVehicleSelect" onchange="populateDieselVehicleData()">
                     <option value="custom">Add My Own</option>
-                    <option value="vauxhall_vivaro_diesel">Vauxhall Vivaro Prime Doublecab 3100 LWB 2.0Tdi 145ps</option>
-                    <option value="ford_transit_diesel">Ford Transit Custom Trend 300 L2 H1 2.0D 110ps</option>
+                    <option value="ford_transit_diesel">Ford Transit 350 L3 H2 2.0TDI 130ps RWD</option>
+                    <option value="vauxhall_vivaro_diesel">Vauxhall Vivaro Pro 2700 SWB 1.5Tdi 120ps</option>
+                    <option value="volkswagen_transporter_diesel">Volkswagen Transporter T6.1 T28 SWB 2.0Tdi 110ps Startline</option>
+                    <option value="peugeot_partner_diesel">Peugeot Partner Professional Premium + Long BHDI 100</option>
+                    <option value="vauxhall_combo_diesel">Vauxhall Combo Pro 2300 LWB 1.5Tdi 100ps</option>
                 </select>
 
                 <label for="costPerLitre">Add the cost of fuel per litre (£):
@@ -54,8 +58,11 @@
                 <label for="evVehicleSelect">Select Electric Vehicle:</label>
                 <select id="evVehicleSelect" onchange="populateEVVehicleData()">
                     <option value="custom">Add My Own</option>
-                    <option value="vauxhall_vivaro_ev">Vauxhall Vivaro EV</option>
-                    <option value="ford_transit_ev">Ford Transit EV</option>
+                    <option value="ford_transit_ev">Ford E-Transit 350 Leader L3 H2 68kWh Battery 184ps RWD Auto</option>
+                    <option value="vauxhall_vivaro_ev">Vauxhall Vivaro Electric Pro 3100 L1 H1 75kWh Battery 136ps Auto</option>
+                    <option value="volkswagen_id_buzz_ev">Volkswagen ID. Buzz Cargo 150kW Commerce Plus 77kWh Auto</option>
+                    <option value="peugeot_e_partner_ev">Peugeot e-Partner Standard 800 100kW 50kWh Professional Van Auto</option>
+                    <option value="vauxhall_combo_ev">Vauxhall Combo Electric Pro 2300 L1 H1 50kWh Battery 136ps Auto</option>
                 </select>
 
                 <label for="costPerKwhSelect">Select the cost of electricity per kWh (£):
@@ -128,9 +135,9 @@
             <div class="summary-box hidden" id="summaryContent">
                 <h3>Summary</h3>
             </div>
-<div class="summary-box hidden" id="co2SummaryContent">
-    <h3>CO2 Emission Savings</h3>
-</div>
+            <div class="summary-box hidden" id="co2SummaryContent">
+                <h3>CO2 Emission Savings</h3>
+            </div>
 
         </div>
     </div>
