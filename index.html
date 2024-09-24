@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICE vs EV Savings Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="content-container">
+            <div class="logo-container">
+                <img src="DGV.png" alt="DGV Logo" class="logo">
+            </div>
+
+            <h1>ICE vs EV Savings Calculator</h1>
+
+            <div class="section">
+                <labelsingle for="annualMileage">Enter Annual Mileage (miles):
+                    <span class="tooltip"><i>?</i>
+                        <span class="tooltiptext">The total miles you expect to drive in a year.</span>
+                    </span>
+                </label>
+                <input type="number" id="annualMileage" value="20000" step="0.01">
+            </div>
+            <div class="section">
+                <h2>Diesel Vehicle</h2>
+
+                <label for="dieselVehicleSelect">Select Diesel Vehicle:</label>
+                <select id="dieselVehicleSelect" onchange="populateDieselVehicleData()">
+                    <option value="custom">Add My Own</option>
+                    <option value="vauxhall_vivaro_diesel">Vauxhall Vivaro Prime Doublecab 3100 LWB 2.0Tdi 145ps</option>
+                    <option value="ford_transit_diesel">Ford Transit Custom Trend 300 L2 H1 2.0D 110ps</option>
+                </select>
+
+                <label for="costPerLitre">Add the cost of fuel per litre (£):
+                    <span class="tooltip"><i>?</i>
+                        <span class="tooltiptext">The current cost per litre of diesel fuel.</span>
+                    </span>
+                </label>
+                <input type="number" id="costPerLitre" value="1.49" step="0.01">
+
+                <label for="mpgDiesel">Enter your expected MPG:
+                    <span class="tooltip"><i>?</i>
+                        <span class="tooltiptext">Miles per gallon your diesel vehicle achieves.</span>
+                    </span>
+                </label>
+                <input type="number" id="mpgDiesel" value="34" step="0.01">
+            </div>
+
+            <div class="section">
+                <h2>Battery Electric Vehicle (BEV)</h2>
+
+                <label for="evVehicleSelect">Select Electric Vehicle:</label>
+                <select id="evVehicleSelect" onchange="populateEVVehicleData()">
+                    <option value="custom">Add My Own</option>
+                    <option value="vauxhall_vivaro_ev">Vauxhall Vivaro EV</option>
+                    <option value="ford_transit_ev">Ford Transit EV</option>
+                </select>
+
+                <label for="costPerKwhSelect">Select the cost of electricity per kWh (£):
+                    <span class="tooltip"><i>?</i>
+                        <span class="tooltiptext">The cost of electricity per kilowatt-hour.</span>
+                    </span>
+                </label>
+                <select id="costPerKwhSelect" onchange="toggleCustomElectricityCost()">
+                    <option value="0.45">Blended Charging (£0.45)</option>
+                    <option value="0.29">Home Charging (£0.29)</option>
+                    <option value="0.40">Commercial Charging (£0.40)</option>
+                    <option value="0.69">Public Charging (£0.69)</option>
+                    <option value="custom">Add My Own</option>
+                </select>
+
+                <input type="number" id="costPerKwh" placeholder="Enter your cost of electricity (£)" step="0.01" style="display:none;">
+
+                <label for="batterySize">Size of the battery (kWh):
+                    <span class="tooltip"><i>?</i>
+                        <span class="tooltiptext">The total capacity of your EV's battery.</span>
+                    </span>
+                </label>
+                <input type="number" id="batterySize" value="75" step="0.01">
+
+                <label for="evRange">Expected range of the vehicle (miles):
+                    <span class="tooltip"><i>?</i>
+                        <span class="tooltiptext">The range your EV can travel on a full charge.</span>
+                    </span>
+                </label>
+                <input type="number" id="evRange" value="170" step="0.01">
+            </div>
+
+            <div class="toggle-container">
+                <label for="includeHireRates">Include weekly hire rates in calculation
+                    <span class="tooltip"><i>?</i>
+                        <span class="tooltiptext">Toggle to include or exclude weekly hire rates.</span>
+                    </span>
+                </label>
+                <div class="toggle">
+                    <input type="checkbox" id="includeHireRates" onchange="toggleHireRateInputs()">
+                    <span class="slider"></span>
+                </div>
+            </div>
+
+            <div id="hireRateInputs" style="display:none;">
+                <div class="section">
+                    <label for="dieselWeeklyHireRate">Diesel weekly hire rate (£):
+                        <span class="tooltip"><i>?</i>
+                            <span class="tooltiptext">Weekly hire cost for a diesel vehicle.</span>
+                        </span>
+                    </label>
+                    <input type="number" id="dieselWeeklyHireRate" value="125" step="0.01">
+                </div>
+                
+                <div class="section">
+                    <label for="evWeeklyHireRate">EV weekly hire rate (£):
+                        <span class="tooltip"><i>?</i>
+                            <span class="tooltiptext">Weekly hire cost for an EV.</span>
+                        </span>
+                    </label>
+                    <input type="number" id="evWeeklyHireRate" value="128" step="0.01">
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button onclick="calculateSavings()">Calculate Savings</button>
+                <button onclick="resetForm()" class="reset-button">Reset</button>
+            </div>
+
+            <div class="summary-box hidden" id="summaryContent">
+                <h3>Summary</h3>
+            </div>
+<div class="summary-box hidden" id="co2SummaryContent">
+    <h3>CO2 Emission Savings</h3>
+</div>
+
+        </div>>
+    </div>
+    <script src="calculator.js"></script>
+</body>
+</html>
