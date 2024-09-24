@@ -113,7 +113,7 @@ function calculateSavings() {
     const dieselCO2Emissions = dieselLitresUsed * 2.67;
 
     // EV CO2 emissions calculation
-    const evCO2Emissions = annualMileage * 80 / 1000; // Convert grams to kilograms
+    const evCO2Emissions = annualMileage * 0 / 1000; // Convert grams to kilograms
 
     // CO2 savings calculation
     const co2Savings = dieselCO2Emissions - evCO2Emissions;
