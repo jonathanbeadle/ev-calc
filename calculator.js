@@ -113,7 +113,7 @@ function calculateSavings() {
     const dieselCO2Emissions = dieselLitresUsed * 2.67;
 
     // EV CO2 emissions calculation
-    const evCO2Emissions = annualMileage * 0 / 1000; // Convert grams to kilograms
+    const evCO2Emissions = annualMileage * 0 / 1000;
 
     // CO2 savings calculation
     const co2Savings = dieselCO2Emissions - evCO2Emissions;
@@ -160,7 +160,7 @@ function calculateSavings() {
     `;
 
     const resultTableClass = weeklySavings > 0 ? 'highlight-green' : 'highlight-red';
-    const co2TableClass = co2Savings > 0 ? 'highlight-green' : 'highlight-red'; // Determine the CO2 highlight class
+    const co2TableClass = co2Savings > 0 ? 'highlight-green' : 'highlight-red';
 
     summaryContent.innerHTML = `
     <h3>Savings Summary</h3>
